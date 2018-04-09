@@ -36,9 +36,10 @@ RUN apt-get update && \
     # Install the amqp extension
     pecl install amqp && \
     docker-php-ext-enable amqp
-# install vim & cron
+# install vim & cron & ps
 RUN apt-get install vim -y && \
-    apt-get install cron -y
+    apt-get install cron -y && \
+    apt-get install procps -y
 COPY ./docker-php-ext-amqp.ini /usr/local/etc/php/conf.d/docker-php-ext-amqp.ini
 # Install Composer.
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
